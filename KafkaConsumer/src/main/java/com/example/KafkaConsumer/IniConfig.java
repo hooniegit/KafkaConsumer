@@ -14,14 +14,11 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class IniConfig implements ApplicationContextInitializer<ConfigurableApplicationContext> {
-	// [Add] ResourceLoader
     private final ResourceLoader resourceLoader = new DefaultResourceLoader();
 
-    // [Initialize] Caught when Spring Application Starts
     @Override
     public void initialize(ConfigurableApplicationContext applicationContext) {
         try {
-            // [Define] Properties : Read config.ini Datas
             Properties props = new Properties();
             Resource resource = resourceLoader.getResource("classpath:config.ini");
             Ini ini = new Ini(new FileReader(resource.getFile()));
@@ -31,10 +28,8 @@ public class IniConfig implements ApplicationContextInitializer<ConfigurableAppl
                 });
             });
 
-            // [Set] Properties as Highest Consideration
             ConfigurableEnvironment environment = applicationContext.getEnvironment();
             
-            // [Set] Properties as Local Variable & Highest Considerable
             PropertiesPropertySource iniPropertySource = new PropertiesPropertySource("iniPropertySource", props);
             environment.getPropertySources().addFirst(iniPropertySource);
         } catch (IOException e) {

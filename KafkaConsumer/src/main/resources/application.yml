@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: KafkaConsumer
+
+  kafka:
+    bootstrap-servers: ${kafka.bootstrap.servers}
+    consumer:
+      group-id: ${kafka.group.id}
+      key-deserializer: ${kafka.consumer.key-deserializer}
+      value-deserializer: ${kafka.consumer.value-deserializer}
+      partition.assignment.strategy: ${kafka.partition.assignment.strategy}
+      enable-auto-commit: false
+      auto-offset-reset: earliest
+      fetch.min.bytes: 1048576
+      max.poll.interval.ms: 60000
+      session.timeout.ms: 60000
+      request.timeout.ms: 60000
+      reconnect.backoff.ms: 1000
+      reconnect.backoff.max.ms: 10000

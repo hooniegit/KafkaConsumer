@@ -25,8 +25,10 @@ public class KafkaConsumerConfig {
     public ConcurrentKafkaListenerContainerFactory<?, ?> kafkaListenerContainerFactory(
     		ConcurrentKafkaListenerContainerFactoryConfigurer configurer,
             ObjectProvider<ConsumerFactory<Object, Object>> kafkaConsumerFactory) {
+    	
+    	System.out.println("[Start] Will Return Kafka Factory");
+    	
         ConcurrentKafkaListenerContainerFactory<Object, Object> factory = new ConcurrentKafkaListenerContainerFactory<>();
-
         configurer.configure(factory, kafkaConsumerFactory
                 .getIfAvailable(() -> new DefaultKafkaConsumerFactory<>(kafkaProperties.buildConsumerProperties(sslBundles))));
         factory.setConcurrency(64);

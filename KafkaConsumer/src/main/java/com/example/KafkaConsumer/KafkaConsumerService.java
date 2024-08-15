@@ -18,17 +18,20 @@ public class KafkaConsumerService {
     @KafkaListener(topics = "SampleTopic", containerFactory = "kafkaListenerContainerFactory")
     public void consume(ConsumerRecord<byte[], byte[]> record, Consumer<?, ?> consumer) {
     	
+    	System.out.println("[Consumer] Will Handle New ConsumerRecord");
+    	
     	// Do Tasks Here..
     	
-        currentOffsets.put(
-            new TopicPartition(record.topic(), record.partition()), 
-            new OffsetAndMetadata(record.offset() + 1, null)
-        );
+        TopicPartition partition = new TopicPartition(record.topic(), record.partition());
+        OffsetAndMetadata offset = new OffsetAndMetadata(record.offset() + 1, null);
+        currentOffsets.put(partition, offset);
+    	
         consumer.commitAsync((offsets, exception) -> {
             if (exception != null) {
-                System.err.printf("Failed to commit offsets: %s%n", exception.getMessage());
+                System.err.printf("[Consumer] Failed to commit offsets: %s%n", exception.getMessage());
             } else {
-                System.out.printf("Offsets committed: %s%n", offsets);
+                System.out.printf("[Consumer] Offsets committed: %s%n", offsets);
+                currentOffsets.remove(partition); // Prepare for Memory Increase
             }
         });
     }

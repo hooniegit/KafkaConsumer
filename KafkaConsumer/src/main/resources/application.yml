@@ -11,7 +11,7 @@ spring:
       partition.assignment.strategy: ${kafka.partition.assignment.strategy}
       enable-auto-commit: false
       auto-offset-reset: earliest
-      fetch.min.bytes: 1048576
+      fetch.min.bytes: 1024
       max.poll.interval.ms: 60000
       session.timeout.ms: 60000
       request.timeout.ms: 60000

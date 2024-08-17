@@ -1,6 +1,8 @@
-package com.example.KafkaConsumer;
+package com.example.KafkaConsumer.Disruptor;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,13 +14,12 @@ import com.example.KafkaConsumer.Class.RAW_BODY;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lmax.disruptor.EventHandler;
 
-public class EventOneHandler implements EventHandler<EventOne>
-{
+public class EventOneHandler implements EventHandler<EventOne> {
     @Override
     public void onEvent(EventOne event, long sequence, boolean endOfBatch)
     {
     	refactor(event.getRecord());
-    	System.out.println("[SAMPLE] Task Finished");
+    	System.out.println("[SAMPLE] Task Finished At " + currentTime());
     }
     
 	public void refactor(ConsumerRecord<byte[], byte[]> record) {
@@ -41,6 +42,12 @@ public class EventOneHandler implements EventHandler<EventOne>
 	    map.put(raw.getHEADER().getLOCATION(), raw.getBODY());
 	    
 	    return map;
+	}
+	
+	private String currentTime() {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy-MM-dd HH:mm:ss");
+        return now.format(formatter);
 	}
 	
     

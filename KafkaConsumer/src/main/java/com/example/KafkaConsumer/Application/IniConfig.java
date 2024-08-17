@@ -1,4 +1,4 @@
-package com.example.KafkaConsumer;
+package com.example.KafkaConsumer.Application;
 
 import org.ini4j.Ini;
 import org.springframework.context.ApplicationContextInitializer;

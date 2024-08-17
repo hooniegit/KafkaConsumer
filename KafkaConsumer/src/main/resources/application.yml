@@ -10,7 +10,7 @@ spring:
       value-deserializer: ${kafka.consumer.value-deserializer}
       partition.assignment.strategy: ${kafka.partition.assignment.strategy}
       enable-auto-commit: false
-      auto-offset-reset: earliest
+      auto-offset-reset: latest
       fetch.min.bytes: 1024
       max.poll.interval.ms: 60000
       session.timeout.ms: 60000

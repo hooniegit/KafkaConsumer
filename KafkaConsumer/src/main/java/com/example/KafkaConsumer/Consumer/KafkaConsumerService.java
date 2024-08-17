@@ -1,8 +1,6 @@
-package com.example.KafkaConsumer;
+package com.example.KafkaConsumer.Consumer;
 
-import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.kafka.clients.consumer.Consumer;
@@ -13,6 +11,8 @@ import org.apache.kafka.common.TopicPartition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
+
+import com.example.KafkaConsumer.Disruptor.EventOneProducer;
 
 @Service
 public class KafkaConsumerService {

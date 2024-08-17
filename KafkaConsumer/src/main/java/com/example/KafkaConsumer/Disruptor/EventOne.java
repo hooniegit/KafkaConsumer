@@ -1,4 +1,4 @@
-package com.example.KafkaConsumer;
+package com.example.KafkaConsumer.Disruptor;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 

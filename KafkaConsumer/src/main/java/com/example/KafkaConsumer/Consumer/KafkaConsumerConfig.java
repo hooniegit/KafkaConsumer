@@ -1,4 +1,4 @@
-package com.example.KafkaConsumer;
+package com.example.KafkaConsumer.Consumer;
 
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;

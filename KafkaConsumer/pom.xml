@@ -102,6 +102,17 @@
 	        <artifactId>netty-all</artifactId>
 	    </dependency>
 		
+	    <!-- [Import] mssql jdbc -->		
+		<dependency>
+		    <groupId>com.microsoft.sqlserver</groupId>
+		    <artifactId>mssql-jdbc</artifactId>
+		</dependency>
+		
+		<!-- [Import] jdbc -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-jdbc</artifactId>
+		</dependency>
 		
 	</dependencies>
 

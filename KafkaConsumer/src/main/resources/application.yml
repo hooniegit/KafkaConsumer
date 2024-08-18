@@ -2,6 +2,12 @@ spring:
   application:
     name: KafkaConsumer
 
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=your_database
+    username: ${mssql.username}
+    password: ${mssql.password}
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
   kafka:
     bootstrap-servers: ${kafka.bootstrap.servers}
     consumer:
@@ -17,3 +23,11 @@ spring:
       request.timeout.ms: 60000
       reconnect.backoff.ms: 1000
       reconnect.backoff.max.ms: 10000
+
+  netty:
+	host01: ${netty.LOC01.host}
+    port01: ${netty.LOC01.port}
+    host02: ${netty.LOC02.host}
+    port02: ${netty.LOC02.port}
+    host03: ${netty.LOC03.host}
+    port03: ${netty.LOC03.port}

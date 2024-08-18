@@ -4,3 +4,16 @@ group.id=TestGroup
 consumer.key-deserializer=org.apache.kafka.common.serialization.ByteArrayDeserializer
 consumer.value-deserializer=org.apache.kafka.common.serialization.ByteArrayDeserializer
 partition.assignment.strategy=org.apache.kafka.clients.consumer.CooperativeStickyAssignor
+
+[mssql]
+url=jdbc:sqlserver://localhost:1433;databaseName=your_database
+username=sa
+password=password
+
+[netty]
+LOC01.host=localhost
+LOC01.port=10100
+LOC02.host=localhost
+LOC02.port=10200
+LOC03.host=localhost
+LOC03.port=10300
